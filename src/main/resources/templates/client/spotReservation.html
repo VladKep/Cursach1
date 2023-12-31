@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation</title>
+    <style>
+        form {
+            background-color: #b1b1b1;
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #969696;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px 0;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form th:method="POST" th:action="@{/available/{id}(id=${spot.getId()})}" th:object="${note}">
+        <label for="startD">Введіть час прибуття("yyyy-MM-dd HH:mm:ss")</label>
+        <input type="text" th:field="*{startDate}" id="startD"><br>
+        <label for="endD">Введіть час відбуття("yyyy-MM-dd HH:mm:ss")</label>
+        <input type="text" th:field="*{endDate}" id="endD">
+        <br>
+        <a th:href="@{/confirm/{id}(id=${spot.getId()})}"><input type="submit" value="Зарезервувати"></a>
+    </form>
+</body>
+</html>

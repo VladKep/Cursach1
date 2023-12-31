@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <style>
+        form {
+            background-color: #b1b1b1;
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #969696;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px 0;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<form th:method="POST" th:action="@{/admin/clients/{id}/update(id=${client.getId()})}" th:object="${client}">
+    <label for="username">Введіть ім'я</label>
+    <input type="text" th:field="*{username}" id="username">
+    <label for="phoneNumber">Введіть телефон</label>
+    <input type="text" th:field="*{phoneNumber}" id="phoneNumber">
+    <label for="email">Введіть пошту</label>
+    <input type="text" th:field="*{email}" id="email">
+    <label for="role">Введіть роль</label>
+    <input type="text" th:field="*{role}" id="role">
+    <label for="password">Введіть пароль</label>
+    <input type="text" th:field="*{password}" id="password">
+    <br>
+    <input type="submit" value="Оновити">
+</form>
+</body>
+</html>
